@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name = "thaara_bot">
+
+  <gazebo reference="body_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="wheel_link1">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="wheel_link2">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="wheel_link3">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="wheel_link4">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <!-- Controller of the 4WD Robot -->
+  <gazebo>
+    <plugin name="skid_steer_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>/</namespace>
+      </ros>
+
+      <!-- Number of wheel pairs -->
+      <num_wheel_pairs>2</num_wheel_pairs>
+
+      <left_front_wheel>wheel_1_base</left_front_wheel>
+      <left_rear_wheel>wheel_2_base</left_rear_wheel>
+      <right_front_wheel>wheel_3_base</right_front_wheel>
+      <right_rear_wheel>wheel_4_base</right_rear_wheel>
+
+      <wheel_separation>${wheel_x_offset}</wheel_separation> <!-- Replace with actual value -->
+      <wheel_diameter>0.125</wheel_diameter> <!-- Adjust to match your wheels -->
+
+      <robot_base_frame>base_link</robot_base_frame>
+
+      <max_wheel_torque>1000</max_wheel_torque> <!-- Nm -->
+      <max_wheel_acceleration>5.0</max_wheel_acceleration> <!-- rad/s² -->
+      <max_wheel_velocity>10.0</max_wheel_velocity> <!-- rad/s -->
+
+      <update_rate>50.0</update_rate>
+      <publish_odom>true</publish_odom>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <command_topic>cmd_vel</command_topic>
+    </plugin>
+  </gazebo>
+
+</robot>

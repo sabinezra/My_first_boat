@@ -1,0 +1,13 @@
+diff_drive_controller:
+  ros__parameters:
+    left_wheel_names: ["wheel_3_base", "wheel_4_base"]
+    right_wheel_names: ["wheel_1_base", "wheel_2_base"]
+    wheel_separation: 0.8         # Update this to your actual separation
+    wheel_radius: 0.125           # Update if your wheel_radius differs
+    base_frame_id: base_link
+    cmd_vel_timeout: 0.25
+    publish_rate: 50.0
+    open_loop: false
+    enable_odom_tf: true
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.0, 0.0, 0.03]
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.0, 0.0, 0.03]
